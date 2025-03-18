@@ -1,0 +1,903 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Praktikum 2 No 1},
+  pdfauthor={Tegar Kusuma},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Praktikum 2 No 1}
+\author{Tegar Kusuma}
+\date{2024-09-11}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#Memanggil}
+\NormalTok{data}\OtherTok{=}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"D:}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Pulse.csv"}\NormalTok{,}\AttributeTok{header=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{datanya}\OtherTok{\textless{}{-}}\FunctionTok{cbind.data.frame}\NormalTok{(data)}
+\FunctionTok{print}\NormalTok{(datanya)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Active Rest Smoke Gender Exercise Hgt Wgt
+## 1       97   78     0      1        1  63 119
+## 2       82   68     1      0        3  70 225
+## 3       88   62     0      0        3  72 175
+## 4      106   74     0      0        3  72 170
+## 5       78   63     0      1        3  67 125
+## 6      109   65     0      0        3  74 188
+## 7       66   43     0      1        3  67 140
+## 8       68   65     0      0        3  70 200
+## 9      100   63     0      0        1  70 165
+## 10      70   59     0      1        2  65 115
+## 11      98   57     0      0        3  72 175
+## 12     140   65     0      1        3  66 135
+## 13     105   85     0      1        1  64 140
+## 14      84   64     0      0        3  75 207
+## 15     134   70     0      1        2  68 150
+## 16     117   66     0      1        2  65 120
+## 17     100   72     0      0        3  74 200
+## 18     108   72     0      0        3  67 170
+## 19      76   75     0      0        2  70 155
+## 20      86   68     1      0        2  73 195
+## 21     110   72     0      1        3  66 130
+## 22      65   61     0      1        3  66 145
+## 23      85   74     0      1        1  68 135
+## 24      80   72     0      0        1  70 135
+## 25      87   72     1      0        2  70 173
+## 26     133   97     0      1        1  65 130
+## 27     125   64     0      1        3  70 172
+## 28      61   53     0      0        3  70 175
+## 29     117   78     0      0        2  74 160
+## 30      90   85     0      1        2  65 120
+## 31     110   80     0      1        1  68 145
+## 32      68   58     0      0        3  74 175
+## 33     102   77     1      0        2  72 200
+## 34      67   53     0      0        3  68 158
+## 35     112   75     0      1        2  64 125
+## 36      86   51     0      0        3  74 195
+## 37      85   74     0      1        3  64 120
+## 38      66   59     0      0        3  69 175
+## 39      73   47     0      1        3  62 145
+## 40      85   72     0      0        1  72 140
+## 41     110   78     0      0        1  69 165
+## 42      97   72     0      1        1  64 135
+## 43      93   70     0      1        1  67 115
+## 44      86   63     0      1        3  65 145
+## 45      80   60     0      1        3  60 106
+## 46      96   80     0      1        2  67 140
+## 47      74   67     0      0        3  68 150
+## 48     124   64     0      0        2  73 260
+## 49      78   65     0      0        1  72 150
+## 50      93   72     0      0        2  71 160
+## 51      80   65     0      0        2  75 245
+## 52      80   67     1      1        2  65 133
+## 53      92   69     0      0        3  68 210
+## 54      69   60     0      0        3  72 205
+## 55      82   62     0      0        3  74 194
+## 56      88   67     0      1        1  64 135
+## 57      74   71     0      0        1  70 190
+## 58      74   62     0      0        2  71 200
+## 59      75   54     0      0        3  72 149
+## 60     120   66     0      1        2  67 150
+## 61     105   77     0      1        3  67 138
+## 62     104   82     0      1        2  65 120
+## 63      99   78     1      0        3  71 165
+## 64     113   64     0      0        2  70 160
+## 65      67   58     0      1        3  68 135
+## 66     125   80     1      1        3  65 125
+## 67     133   92     1      0        1  69 185
+## 68      98   67     0      1        2  64 140
+## 69      80   64     0      1        3  71 135
+## 70      91   65     1      0        2  67 150
+## 71      76   63     0      1        3  63 135
+## 72      78   52     0      0        3  75 215
+## 73      94   74     0      1        2  64 160
+## 74     150   64     0      0        2  71 170
+## 75      92   66     0      0        3  77 180
+## 76      96   67     1      1        2  64 165
+## 77      68   58     0      1        3  67 140
+## 78      82   62     0      1        3  62 145
+## 79     102   77     0      1        1  63 124
+## 80      69   63     0      0        2  69 140
+## 81      65   69     0      0        3  71 165
+## 82      84   64     0      0        3  72 185
+## 83      86   60     1      1        1  68 150
+## 84      84   61     0      1        2  65 115
+## 85     116   70     1      1        2  70 150
+## 86      88   71     0      1        1  61 110
+## 87      65   63     0      1        3  64 120
+## 88     101   75     0      0        1  64 110
+## 89      89   71     0      1        3  61 150
+## 90     128   64     0      1        3  67 133
+## 91      68   56     0      1        3  66 160
+## 92      90   72     0      0        2  67 130
+## 93      80   65     0      0        3  69 150
+## 94      80   63     0      0        1  70 135
+## 95      98   79     0      0        2  74 180
+## 96      90   61     0      0        3  71 183
+## 97      82   68     0      1        1  64 120
+## 98      97   61     0      1        3  64 113
+## 99      90   67     1      0        2  74 180
+## 100     98   67     0      1        2  63 150
+## 101     88   54     0      0        3  67 176
+## 102     94   69     0      0        2  72 195
+## 103     92   58     1      0        2  65 165
+## 104     96   76     0      1        2  67 155
+## 105     80   68     0      1        2  64 135
+## 106     66   55     0      1        3  65 125
+## 107    110   83     1      1        1  63 114
+## 108     87   80     0      1        2  69 141
+## 109     88   56     0      1        3  68 172
+## 110     94   83     0      0        1  66 110
+## 111     96   74     0      1        2  67 123
+## 112     89   78     0      0        3  67 145
+## 113     74   61     0      0        3  75 180
+## 114    111   75     0      0        2  71 180
+## 115     81   72     0      1        3  70 135
+## 116     98   63     1      0        3  78 238
+## 117     99   78     0      1        2  63 115
+## 118     65   54     0      0        3  74 190
+## 119     95   80     0      0        3  72 175
+## 120    127   69     0      1        2  64 135
+## 121     76   50     0      0        3  71 208
+## 122    102   69     0      1        2  63 110
+## 123     88   67     0      0        2  68 157
+## 124    125   80     0      1        1  61 110
+## 125     72   63     1      0        2  72 210
+## 126     76   68     0      1        2  62 137
+## 127    112   64     0      0        3  70 192
+## 128     69   48     0      1        3  67 140
+## 129    101   82     0      1        3  64 125
+## 130     72   64     0      1        3  63 145
+## 131    112   79     1      1        1  69 130
+## 132     81   61     0      0        3  68 160
+## 133     90   73     0      1        2  67 140
+## 134     96   75     0      1        1  66 135
+## 135     66   59     0      0        2  70 175
+## 136    114   74     0      1        2  67 150
+## 137     71   66     0      1        2  62 102
+## 138     75   60     0      0        2  70 160
+## 139    102   76     0      0        3  70 160
+## 140    138   92     0      1        1  64 120
+## 141     85   71     0      1        3  68 130
+## 142     80   72     0      0        3  70 180
+## 143    107   68     0      0        2  67 155
+## 144    119   81     0      1        2  61 130
+## 145     98   68     0      0        3  72 195
+## 146     95   58     0      0        2  74 225
+## 147     95   63     0      1        2  69 125
+## 148     76   84     0      0        1  71 155
+## 149     96   74     0      1        2  63 116
+## 150    102   78     0      0        2  71 154
+## 151     82   68     0      0        3  72 195
+## 152     99   66     0      1        2  65 145
+## 153     80   70     0      0        2  70 175
+## 154     83   72     0      0        2  73 175
+## 155    102   84     0      1        2  64 150
+## 156    102   77     0      0        2  72 187
+## 157    106   78     0      1        2  66 154
+## 158     79   63     0      1        3  68 140
+## 159     80   60     0      1        3  61 115
+## 160     79   68     1      0        2  69 163
+## 161    110   80     0      1        2  61 125
+## 162    144  106     0      1        1  62 140
+## 163     80   73     0      0        2  70 155
+## 164     97   73     0      1        1  67 115
+## 165     60   55     0      0        3  72 160
+## 166     80   62     0      0        3  72 193
+## 167    108   63     0      0        3  71 165
+## 168    107   75     0      1        2  67 150
+## 169     51   54     0      0        3  74 150
+## 170     68   72     0      0        1  70 205
+## 171     80   63     0      0        3  71 183
+## 172     80   74     0      1        2  68 139
+## 173     60   58     0      0        3  70 168
+## 174     64   60     0      0        3  71 165
+## 175     87   70     0      0        2  73 210
+## 176    110   95     1      0        1  69 180
+## 177    110   88     0      1        2  66 145
+## 178     82   70     1      0        1  70 185
+## 179    154   82     0      0        1  71 250
+## 180    139   72     1      1        1  63 112
+## 181     86   58     0      0        3  70 185
+## 182     95   68     0      1        3  64 145
+## 183    112   90     0      1        2  61 122
+## 184    120   81     0      0        2  71 150
+## 185     79   69     0      0        3  71 148
+## 186     64   48     0      0        3  69 170
+## 187     84   60     0      0        2  72 177
+## 188     65   75     1      1        2  65 145
+## 189     60   54     0      0        3  73 194
+## 190     79   58     0      1        3  67 150
+## 191     79   53     0      0        2  72 172
+## 192     70   55     0      1        3  68 150
+## 193     75   71     0      0        2  70 175
+## 194    107   65     0      1        2  65 128
+## 195     78   68     1      0        2  72 165
+## 196     74   62     0      0        2  73 180
+## 197     80   68     0      0        3  69 160
+## 198    121   94     1      0        1  74 250
+## 199    120   58     0      0        3  71 187
+## 200     96   74     0      1        2  70 151
+## 201     75   73     0      0        1  71 152
+## 202    106   78     0      1        2  61 122
+## 203     88   63     0      1        2  69 145
+## 204     91   58     0      1        2  68 143
+## 205     98   70     0      0        3  70 245
+## 206     63   53     0      1        3  65 107
+## 207     95   63     0      0        2  73 192
+## 208     85   67     0      1        2  70 165
+## 209     83   55     0      0        3  70 190
+## 210     92   68     0      1        3  67 135
+## 211     81   64     0      1        1  66 145
+## 212     89   60     0      1        2  62 136
+## 213    103   73     1      0        1  71 220
+## 214    110   74     0      1        2  66 130
+## 215     78   66     0      0        2  70 185
+## 216    122   80     0      0        3  67 150
+## 217    122   98     0      1        1  62 105
+## 218     71   57     0      1        3  65 145
+## 219     65   61     0      0        3  71 175
+## 220     92   70     0      0        1  76 260
+## 221     93   71     0      1        2  67 175
+## 222     88   57     0      0        3  76 230
+## 223     90   73     0      0        3  70 205
+## 224     56   52     0      1        3  66 145
+## 225     95   70     0      1        2  66 150
+## 226     83   64     0      0        3  68 135
+## 227     97   55     0      0        3  67 175
+## 228    105   85     0      1        2  64 150
+## 229     82   74     0      1        3  66 124
+## 230    102   81     0      0        2  69 172
+## 231     87   67     0      0        2  68 170
+## 232     81   62     0      0        3  68 151
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#1a}
+\CommentTok{\#data gender }
+\NormalTok{height }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Hgt, data}\SpecialCharTok{$}\NormalTok{Gender, summary)}
+\NormalTok{weight }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Wgt, data}\SpecialCharTok{$}\NormalTok{Gender, summary)}
+
+\CommentTok{\#data active}
+\NormalTok{active\_smoke }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Active, data}\SpecialCharTok{$}\NormalTok{Smoke, summary)}
+\NormalTok{active\_gender }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Active, data}\SpecialCharTok{$}\NormalTok{Gender, summary)}
+\NormalTok{active\_exercise }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Active, data}\SpecialCharTok{$}\NormalTok{Exercise, summary)}
+
+\CommentTok{\#data rest}
+\NormalTok{rest\_smoke    }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Rest, data}\SpecialCharTok{$}\NormalTok{Smoke, summary)}
+\NormalTok{rest\_gender   }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Rest, data}\SpecialCharTok{$}\NormalTok{Gender, summary)}
+\NormalTok{rest\_exercise }\OtherTok{=} \FunctionTok{by}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Rest, data}\SpecialCharTok{$}\NormalTok{Exercise, summary)}
+
+\FunctionTok{print}\NormalTok{(height)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Gender: 0
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   64.00   70.00   71.00   70.91   72.00   78.00 
+## ------------------------------------------------------------ 
+## data$Gender: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   60.00   64.00   65.00   65.29   67.00   71.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Gender: 0
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   110.0   160.0   175.0   178.7   193.8   260.0 
+## ------------------------------------------------------------ 
+## data$Gender: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   102.0   123.2   135.0   134.9   145.0   175.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(active\_smoke)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Smoke: 0
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   51.00   78.25   88.00   90.52  101.75  154.00 
+## ------------------------------------------------------------ 
+## data$Smoke: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   65.00   83.00   94.00   97.46  110.00  139.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(active\_gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Gender: 0
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   51.00   76.50   85.50   88.12   98.00  154.00 
+## ------------------------------------------------------------ 
+## data$Gender: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   56.00   80.25   95.00   94.82  106.75  144.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(active\_exercise)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Exercise: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    68.0    85.0    97.0   101.1   110.0   154.0 
+## ------------------------------------------------------------ 
+## data$Exercise: 2
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   65.00   83.50   95.00   94.92  105.50  150.00 
+## ------------------------------------------------------------ 
+## data$Exercise: 3
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   51.00   69.75   81.50   83.97   92.75  140.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(rest\_smoke)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Smoke: 0
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   43.00   61.00   67.00   67.79   74.00  106.00 
+## ------------------------------------------------------------ 
+## data$Smoke: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   58.00   67.00   70.00   72.77   77.75   95.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(rest\_gender)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Gender: 0
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   48.00   61.00   66.00   66.78   72.00   95.00 
+## ------------------------------------------------------------ 
+## data$Gender: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   43.00   63.00   70.00   70.09   75.75  106.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(rest\_exercise)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data$Exercise: 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   60.00   71.00   74.00   77.27   83.00  106.00 
+## ------------------------------------------------------------ 
+## data$Exercise: 2
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   53.00   65.50   70.00   70.42   75.00   90.00 
+## ------------------------------------------------------------ 
+## data$Exercise: 3
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   43.00   57.00   63.00   62.81   68.00   82.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#1b}
+\FunctionTok{boxplot}\NormalTok{(Hgt }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Distribusi Tinggi Badan Berdasarkan Gender"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Wgt }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Distribusi Berat Badan Berdasarkan Gender"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Active }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Smoke, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Boxplot berdasarkan Active dan Smoke"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Active }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Boxplot berdasarkan Active dan Gender"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Active }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Exercise, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Boxplot berdasarkan Active dan Exercise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Rest }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Smoke, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Boxplot berdasarkan Rest dan Smoke"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Rest }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Boxplot berdasarkan Rest dan Gender"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(Rest }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Exercise, }\AttributeTok{data =}\NormalTok{ data, }\AttributeTok{main =} \StringTok{"Boxplot berdasarkan Rest dan Exercise"}\NormalTok{)}
+
+\CommentTok{\#1c}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Menghitung statistik untuk Height berdasarkan Gender}
+\NormalTok{result\_height }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Gender) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_height =} \FunctionTok{mean}\NormalTok{(Hgt),}
+    \AttributeTok{median\_height =} \FunctionTok{median}\NormalTok{(Hgt),}
+    \AttributeTok{variance\_height =} \FunctionTok{var}\NormalTok{(Hgt),}
+    \AttributeTok{Q1\_height =} \FunctionTok{quantile}\NormalTok{(Hgt, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{Q3\_height =} \FunctionTok{quantile}\NormalTok{(Hgt, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{cv\_height =} \FunctionTok{sd}\NormalTok{(Hgt) }\SpecialCharTok{/} \FunctionTok{mean}\NormalTok{(Hgt)}
+\NormalTok{  )}
+\FunctionTok{print}\NormalTok{(result\_height)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 7
+##   Gender mean_height median_height variance_height Q1_height Q3_height cv_height
+##    <int>       <dbl>         <dbl>           <dbl>     <dbl>     <dbl>     <dbl>
+## 1      0        70.9            71            6.03        70        70    0.0346
+## 2      1        65.3            65            6.17        64        64    0.0380
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Menghitung statistik untuk Weight berdasarkan Gender}
+\NormalTok{result\_weight }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Gender) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_weight =} \FunctionTok{mean}\NormalTok{(Wgt),}
+    \AttributeTok{median\_weight =} \FunctionTok{median}\NormalTok{(Wgt),}
+    \AttributeTok{variance\_weight =} \FunctionTok{var}\NormalTok{(Wgt),}
+    \AttributeTok{Q1\_weight =} \FunctionTok{quantile}\NormalTok{(Wgt, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{Q3\_weight =} \FunctionTok{quantile}\NormalTok{(Wgt, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{cv\_weight =} \FunctionTok{sd}\NormalTok{(Wgt) }\SpecialCharTok{/} \FunctionTok{mean}\NormalTok{(Wgt)}
+\NormalTok{  )}
+\FunctionTok{print}\NormalTok{(result\_weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 7
+##   Gender mean_weight median_weight variance_weight Q1_weight Q3_weight cv_weight
+##    <int>       <dbl>         <dbl>           <dbl>     <dbl>     <dbl>     <dbl>
+## 1      0        179.           175            803.      160       160      0.159
+## 2      1        135.           135            241.      123.      123.     0.115
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Menghitung statistik untuk Active }
+\NormalTok{result\_active }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Smoke, Gender, Exercise) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_active =} \FunctionTok{mean}\NormalTok{(Active),}
+    \AttributeTok{median\_active =} \FunctionTok{median}\NormalTok{(Active),}
+    \AttributeTok{variance\_active =} \FunctionTok{var}\NormalTok{(Active),}
+    \AttributeTok{Q1\_active =} \FunctionTok{quantile}\NormalTok{(Active, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{Q3\_active =} \FunctionTok{quantile}\NormalTok{(Active, }\FloatTok{0.75}\NormalTok{),}
+    \AttributeTok{cv\_active =} \FunctionTok{sd}\NormalTok{(Active) }\SpecialCharTok{/} \FunctionTok{mean}\NormalTok{(Active)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'Smoke', 'Gender'. You can override using
+## the `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(result\_active)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 9
+## # Groups:   Smoke, Gender [4]
+##    Smoke Gender Exercise mean_active median_active variance_active Q1_active
+##    <int>  <int>    <int>       <dbl>         <dbl>           <dbl>     <dbl>
+##  1     0      0        1        90.5          82.5           482.       76.5
+##  2     0      0        2        92.4          88             340.       79  
+##  3     0      0        3        83.3          82             256.       70.2
+##  4     0      1        1       105.           97             389.       89.2
+##  5     0      1        2        99.0          98             192.       90  
+##  6     0      1        3        83.2          80             351.       69.2
+##  7     1      0        1       110.          110             371.      103  
+##  8     1      0        2        86.3          87              80.2      79  
+##  9     1      0        3        93            98              91        90  
+## 10     1      1        1       112.          111             470.      104  
+## 11     1      1        2        89.2          88             478.       76.2
+## 12     1      1        3       125           125              NA       125  
+## # i 2 more variables: Q3_active <dbl>, cv_active <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Menghitung statistik untuk Rest }
+\NormalTok{result\_rest }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Smoke, Gender, Exercise) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{mean\_rest =} \FunctionTok{mean}\NormalTok{(Rest),}
+    \AttributeTok{median\_rest =} \FunctionTok{median}\NormalTok{(Rest),}
+    \AttributeTok{variance\_rest =} \FunctionTok{var}\NormalTok{(Rest),}
+    \AttributeTok{Q1\_rest =} \FunctionTok{quantile}\NormalTok{(Rest, }\FloatTok{0.25}\NormalTok{),}
+    \AttributeTok{Q3\_rest =} \FunctionTok{quantile}\NormalTok{(Rest, }\FloatTok{0.75}\NormalTok{),}
+    \AttributeTok{cv\_rest =} \FunctionTok{sd}\NormalTok{(Rest) }\SpecialCharTok{/} \FunctionTok{mean}\NormalTok{(Rest)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'Smoke', 'Gender'. You can override using
+## the `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(result\_rest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 9
+## # Groups:   Smoke, Gender [4]
+##    Smoke Gender Exercise mean_rest median_rest variance_rest Q1_rest Q3_rest
+##    <int>  <int>    <int>     <dbl>       <dbl>         <dbl>   <dbl>   <dbl>
+##  1     0      0        1      73.1        72            47.0    70.2    77.2
+##  2     0      0        2      68.4        68            51.3    63      73  
+##  3     0      0        3      62.5        62            59.3    57      68  
+##  4     0      1        1      79.3        76           140.     71.2    83.8
+##  5     0      1        2      72.6        74            61.6    67      78  
+##  6     0      1        3      62.2        63            70.0    57.2    67.2
+##  7     1      0        1      84.8        92           150.     73      94  
+##  8     1      0        2      67.3        68            28.5    65      68  
+##  9     1      0        3      69.7        68            58.3    65.5    73  
+## 10     1      1        1      73.5        75.5         102.     69      80  
+## 11     1      1        2      69.8        68.5          14.2    67      71.2
+## 12     1      1        3      80          80            NA      80      80  
+## # i 1 more variable: cv_rest <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Menampilkan hasil}
+
+\CommentTok{\#1d}
+
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-8.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Active dan Smoke}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Active, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Smoke))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Active berdasarkan Smoke"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Rest"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-9.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Active dan Gender}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Active, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Gender))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Active berdasarkan Gender"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Rest"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }
+                    \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-10.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Active dan Exercise}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Rest, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Exercise))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Active berdasarkan Exercise"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Rest"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }
+                    \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{,}\StringTok{"3"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-11.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Rest dan Exercise}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Rest, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Exercise))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Rest berdasarkan Exercise"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Rest"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }
+                    \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{,}\StringTok{"3"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-12.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Rest dan Gender}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Rest, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Gender))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Rest berdasarkan Gender"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Rest"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-13.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Rest dan Smoke}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Rest, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Smoke))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Rest berdasarkan Smoke"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Rest"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-14.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Height dan Gender}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Hgt, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Gender))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Tinggi Badan Berdasarkan Gender"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Tinggi Badan (cm)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-15.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Histogram untuk Weight dan Gender}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Wgt, }\AttributeTok{fill =} \FunctionTok{as.factor}\NormalTok{(Gender))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribusi Berat Badan Berdasarkan Gender"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Berat Badan"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Frekuensi"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"green"}\NormalTok{), }
+                    \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/unnamed-chunk-1-16.pdf}
+
+\subsection{R Markdown}\label{r-markdown}
+
+This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see \url{http://rmarkdown.rstudio.com}.
+
+When you click the \textbf{Knit} button a document will be generated
+that includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+\end{verbatim}
+
+\subsection{Including Plots}\label{including-plots}
+
+You can also embed plots, for example:
+
+\includegraphics{Praktikum-2-no-1-markdown_files/figure-latex/pressure-1.pdf}
+
+Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
+chunk to prevent printing of the R code that generated the plot.
+
+\end{document}
